@@ -3,7 +3,7 @@ Simple Integrated Development Environment for writing and executing C Language f
 Superset of Raylib Text Editor: https://github.com/djeffalKhaled/Raylib-Text-Editor
 
 ## Functionality:
-- Full text editing
+- Basic text-editing
 - Can compile current text into .c file
 - Can execute said .c file and print its stdout in the GUI console
 - Ability to save and load your content into a text file
