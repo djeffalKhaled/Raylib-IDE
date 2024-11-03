@@ -1,5 +1,5 @@
 # Raylib IDE: 
-Simple Integrated Development Environment for writing and executing C Language files. Desktop app programmed in C Language using RayLib. <br>
+Currently in-development simple Integrated Development Environment for writing and executing C Language files. Desktop app fully programmed in C Language using the RayLib library. <br>
 Superset of Raylib Text Editor: https://github.com/djeffalKhaled/Raylib-Text-Editor
 
 ## Functionality:
