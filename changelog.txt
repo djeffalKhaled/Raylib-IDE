@@ -1,0 +1,49 @@
+-- Raylib IDE Changelog:
+v 0.0: 03/11
+    - First version
+    - Added C file compilation and execution
+    - Added Execute button GUI
+    - Dark theme and init color support
+    - Known Issue: Console Title doesn't change properly based on window size
+
+NOTE:
+Raylib IDE is based on Raylib Text Editor and thus both have to catch up to each other
+in terms of changes that relate to one another.
+
+-- Raylib Text Editor && Raylib IDE Parity Issues:
+    - Ability to init colors for text background
+    - Raylib IDE is dark themed
+    
+
+-- Raylib Text Editor Changelog
+v 0.4: 01/11 + 02/11
+    - Added mousewheel scrolling support
+    - Added icons for all buttons
+    - Organised code in main.c 
+    - Added a very elementary cursor 
+    - TextArea now only resizes width based on window -- Add height support later
+    - Allowed screen-resizing 
+    - Tabs support
+
+v 0.3: 29/10
+    - Better GUI positions
+    - Better Style
+    - Element reposition based on screen size
+    - Text Pages
+    - Previous and Next page buttons
+    - Empty and New buttons
+    - Optimised Save and Load and added pages support
+
+v 0.2: 28/10
+    - Text warping and better formating
+    - Debug logs now work
+    - Added raydraw functions
+    - Organised Files
+
+v 0.1: 28/10
+    - Save and Load
+    - Fullscreen mode 
+    - Centered window
+
+V 0.0: 22/10
+    - First version
