@@ -1,5 +1,6 @@
 # Raylib IDE: 
-Currently in-development simple Integrated Development Environment for writing and executing C Language files. Desktop app fully programmed in C Language using the RayLib library. <br>
+-Currently in-development- <br>
+Simple Integrated Development Environment for writing and executing C Language files. Styled as a terminal similar to those tools you'd see on cheesy american "hacker" movies or those fallout 4 terminals. Desktop app fully programmed in C Language using the RayLib library. <br>
 Superset of Raylib Text Editor: https://github.com/djeffalKhaled/Raylib-Text-Editor
 
 ## Functionality:
