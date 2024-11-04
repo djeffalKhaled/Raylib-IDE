@@ -3,6 +3,7 @@
 #define RAYGUI_IMPLEMENTATION
 #include "raygui.h"
 #include "raydraw.h"
+#include "include/style_terminal.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,9 +30,11 @@ int main(void) {
     SetConfigFlags(FLAG_WINDOW_RESIZABLE);
 
     // COLOR DATA (last ff relates to transparency) Dark theme for now disabled
-    Color textBgColor = WHITE; //GetColor(0x303030ff);
-    Color consoleBgColor = LIGHTGRAY; //GetColor(0x181818ff);
-    Color borderColor = GRAY; //GetColor(0x101010ff);
+    Color bgColor = GetColor(0x161313ff);
+    Color textBgColor = GetColor(0x0c1505ff); 
+    Color borderColor = GetColor(0x223b22ff);
+    Color userTextColor = GetColor(0x38f620ff);
+    Color consoleTextColor = GetColor(0x38f620ff);
 
     // RECTS
     Rectangle saveRect = {0, 0, 200, 50};
@@ -43,7 +46,7 @@ int main(void) {
     Rectangle nextRect = {1050, 0, 50, 50};
     
 
-    Rectangle textArea = {50, 100, initScreenWidth - 50, (initScreenHeight - 50) - 50};
+    Rectangle textArea = {50, 100, initScreenWidth - 50, (initScreenHeight - 300) - 50};
 
 
     // Writing
@@ -58,37 +61,37 @@ int main(void) {
     // Console
     sds consoleLog = sdsnew("");
     Rectangle consoleTextArea = {50, 600, initScreenWidth - 50, (initScreenHeight - 50) - 50};
+    bool isWindowBoxActive = true;
 
-    
     InitWindow(initScreenWidth, initScreenHeight, "Raylib IDE");
     GuiSetStyle(DEFAULT, TEXT_SIZE, 25);
+    GuiLoadStyleTerminal();
     SetTargetFPS(60);
+    Font consoleFont = GetTerminalFont();
 
     while (!WindowShouldClose()) {
 
         handleScreenSize(initScreenWidth, initScreenHeight);
-
+    
         Vector2 screen = getScreenSize(initScreenWidth, initScreenHeight);
         int screenWidth = screen.x;
         int screenHeight = screen.y;
 
         // Update sizes for fullscreen resizing
         Rectangle textEditorRect = {0, 50, screenWidth, (screenHeight - 300)};
-        Rectangle consoleRect = {0, 50, screenWidth, (screenHeight - 50)};
-        Rectangle consoleTitleRect = {0, 50, screenWidth - 1250, (screenHeight - 250)};
-        Rectangle consoleTitleArea = {50, 560, screenWidth - 50, (screenHeight - 50) - 50};
+        Rectangle consoleRect = {0, (screenHeight - 250), screenWidth, (screenHeight - 50)};
         // allows text scroll
         textArea = setScrollable(textArea, scrollSpeed); 
         textArea.width = screenWidth - 50; // doesn't support height reposition yet
         consoleTextArea = setScrollable(consoleTextArea, scrollSpeed); 
         consoleTextArea.width = screenWidth - 50; 
-        consoleTitleArea.width = screenWidth - 50;
 
 
         BeginDrawing();
-        ClearBackground(RAYWHITE);
-
-        DrawText("RAYLIB-IDE", screenWidth - 200, 10, 30, BLUE);
+        ClearBackground(bgColor);
+        
+        Vector2 titlepos = {screenWidth - 200, 5};
+        DrawTextEx(consoleFont, "RAYLIB-IDE", titlepos, 35, 5, userTextColor);
 
 
         // Console
@@ -97,10 +100,11 @@ int main(void) {
             printf("IDE_EXECUTEPAGE: %s", consoleLog);
         }
         // Console Text
-        GuiDrawRectangle(consoleRect, 10, borderColor, consoleBgColor); // console background
-        DrawTextBoxed(GetFontDefault(), consoleLog, consoleTextArea, 30, 10, true, BLACK);
-        GuiDrawRectangle(consoleTitleRect, 10, GRAY, WHITE);
-        DrawTextBoxed(GetFontDefault(), "CONSOLE:", consoleTitleArea, 20, 10, true, BLACK);
+        if (isWindowBoxActive) {
+            isWindowBoxActive = !GuiWindowBox(consoleRect, "CONSOLE"); // draws console window
+            DrawTextBoxed(consoleFont, consoleLog, consoleTextArea, 30, 10, true, consoleTextColor);
+        }
+        
         
 
         // Attempt at a text cursor
@@ -114,10 +118,10 @@ int main(void) {
         raylib_Debug(charToString(charUserText), screenWidth - 100);
         userText = sdscat(userText, charToString(charUserText));
 
-        GuiDrawRectangle(textEditorRect, 10, borderColor, textBgColor); // textArea background
+        GuiDrawRectangle(textEditorRect, 5, borderColor, textBgColor); // textArea background
         cursor = appendCursorAtmp1(sdslen(userText));
-        DrawTextBoxed(GetFontDefault(), userText, textArea, 40, 10, true, BLACK);
-        DrawTextBoxed(GetFontDefault(), cursor, textArea, 40, 10, true, RED);
+        DrawTextBoxed(GetFontDefault(), userText, textArea, 40, 10, true, userTextColor);
+        //DrawTextBoxed(GetFontDefault(), cursor, textArea, 40, 10, true, RED);
 
         // Text Details Section
         DrawText(intToStr(sdslen(userText)), 50, screenHeight - 50, 30, BLACK);

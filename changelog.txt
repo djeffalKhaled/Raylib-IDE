@@ -1,9 +1,17 @@
 -- Raylib IDE Changelog:
+v 0.1: 04/11
+    - Major style changes: Terminal style
+    - Improved Console Style
+    - Console now is a GuiWindow
+    - Main text now scrolls below the console
+    - Disabled the cursor
+    
+
 v 0.0: 03/11
     - First version
     - Added C file compilation and execution
     - Added Execute button GUI
-    - Dark theme and init color support
+    - Init color support
     - Known Issue: Console Title doesn't change properly based on window size
 
 NOTE:
@@ -12,7 +20,8 @@ in terms of changes that relate to one another.
 
 -- Raylib Text Editor && Raylib IDE Parity Issues:
     - Ability to init colors for text background
-    - Raylib IDE is dark themed
+    - RIDE Buttons are structured differently, prev and next have no text
+    - RIDE is dark themed
     
 
 -- Raylib Text Editor Changelog
