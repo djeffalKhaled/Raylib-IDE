@@ -1,0 +1,6 @@
+raygui.h linguist-vendored
+raydraw.h linguist-vendored
+include/sds.c linguist-vendored
+include/sds.h linguist-vendored
+include/sdsalloc.h linguist-vendored
+include/await.h linguist-vendored
