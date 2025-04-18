@@ -1,20 +1,12 @@
-# Raylib IDE: 
-Simple Integrated Development Environment for writing and executing C Language files. Styled as a terminal inspired to fallout 4 terminals. Desktop app fully programmed in C Language using the RayLib library. <br>
-Superset of Raylib Text Editor: https://github.com/djeffalKhaled/Raylib-Text-Editor
+It's a text editor made in c language that supports compiling and executing c language programs, with a console GUI and basic IDE functionalities. It's styled as a terminal inspired to fallout 4 terminals cuz that's cool. 
 
 ## Functionality:
-- Basic text-editing
-- Can compile current text into .c file
-- Can execute said .c file and print its stdout in the GUI console
-- Ability to save and load your content into a text file
-- Up to 10 pages of projects
-- Fully scrollable and resizable window
+- Transforms text into a saved .c file, which is then compiled and its stdout is printed into the GUI console.
+- Supports saving and loading text files.
 
 ## Libraries:
-- Raylib
-- RayGUI
+- Raylib + RayGUI
 - Simple Dynamic Strings
 
 ## Installation:
-- Run the main.exe file directly.
-- You can also compile the project yourself by opening it in VS Code.
+- Run the main.exe file directly or compile it.
